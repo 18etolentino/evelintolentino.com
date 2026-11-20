@@ -8,6 +8,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <!-- Arriving from the home page "See My Work" button: this page is revealed as a
+       circle growing out of the button (browser view transition; Chrome, Edge, Safari 18+).
+       Other visits get the normal page load. -->
+  <script>
+    try {
+      const v = JSON.parse(sessionStorage.getItem('etReveal') || 'null');
+      if (v) {
+        sessionStorage.removeItem('etReveal');
+        const h = document.documentElement;
+        h.classList.add('from-button');
+        h.style.setProperty('--vx', (v.x * 100) + 'vw');
+        h.style.setProperty('--vy', (v.y * 100) + 'vh');
+      }
+    } catch (e) {}
+  </script>
+  <style>
+    @view-transition { navigation: auto; }
+    /* soft ripple reveal: the Work page fades in through a feathered circle that
+       spreads from the button, while the home page gently dissolves behind it */
+    @property --vr { syntax: "<length>"; inherits: true; initial-value: 0px; }
+    html.from-button::view-transition-group(root) { animation-duration: 1s; }
+    html.from-button::view-transition-old(root) {
+      animation: homeDissolve 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    html.from-button::view-transition-new(root) {
+      --feather: 28vmax;
+      -webkit-mask-image: radial-gradient(circle at var(--vx, 50vw) var(--vy, 60vh), #000 calc(var(--vr) - var(--feather)), transparent var(--vr));
+              mask-image: radial-gradient(circle at var(--vx, 50vw) var(--vy, 60vh), #000 calc(var(--vr) - var(--feather)), transparent var(--vr));
+      animation: rippleIn 1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    @keyframes rippleIn {
+      from { --vr: 0px; opacity: 0.6; }
+      to   { --vr: 190vmax; opacity: 1; }
+    }
+    @keyframes homeDissolve {
+      from { opacity: 1; transform: scale(1);    filter: blur(0); }
+      to   { opacity: 0; transform: scale(1.04); filter: blur(6px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html.from-button::view-transition-old(root),
+      html.from-button::view-transition-new(root) { animation: none; -webkit-mask-image: none; mask-image: none; }
+    }
+  </style>
   <style>
     /* Work page layout — gallery fills viewport, footer sits below naturally */
     html, body {

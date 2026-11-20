@@ -1,0 +1,25 @@
+SHIP CHECKLIST (delete this file after, it doesn't need to go in the repo)
+
+1. Copy everything in this folder into the root of your repo (branch v2-portfolio).
+   - index.html and work.html replace yours (work.html only gained a small page-transition snippet in <head>)
+   - hero-shimmer.css, hero-shimmer.js are new
+   - listo.html, listo.css replace yours (if you already copied them on Nov 18, they're the same)
+   - listo-img/listo_building.gif goes in the listo-img folder
+
+2. If you copied them earlier, DELETE: hero-orb.css, hero-orb.js (no longer used)
+
+3. Put your exported Listo media into listo-img/ with these exact names:
+   listo_context_ice1.png  listo_context_ice2.png  listo_context_ice3.png
+   listo_context_ice5.png  listo_context_ice6.png  listo_context_ice7.png
+   listo_context_ice8.png  listo_context_ice9.png
+   listo_hero_phone.png    listo_fivestars.png     listo_early_prototype.png
+   listo_moodboard.png     listo_emergency_full_flow.mp4
+   listo_solution_resource.mov
+   listo_solution_plan_roadmap.mov   <- rename it, no spaces in the name
+
+4. Push, wait ~1 min for GitHub Pages, then hard refresh (Cmd+Shift+R).
+
+5. Before calling it done, confirm the Listo copy:
+   - "5/6 participants found free legal help" stat
+   - 5.5/7 vs 5-6/7
+   - "14 million" vs "up to 14 million"

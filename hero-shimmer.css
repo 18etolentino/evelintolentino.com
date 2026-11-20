@@ -1,0 +1,138 @@
+/* ============================================
+   HOME HERO — iridescent shimmer over the original gradient
+   Loaded only by index.html. The gradient itself still comes from .hero in style.css.
+   ============================================ */
+.hero.hero--shimmer {
+  position: relative; overflow: hidden; isolation: isolate;
+  /* fallback if WebGL can't run: a purple close to the shimmer, not the old blue/terracotta */
+  background: linear-gradient(135deg, #3b3270 0%, #6a58b0 50%, #483e77 100%);
+  background-size: 200% 200%;
+}
+.hero.hero--shimmer > *:not(.hero-shimmer) { position: relative; z-index: 1; }
+.hero-shimmer {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: block; z-index: 0; pointer-events: none;
+}
+
+/* ============================================
+   "See My Work" — specular glass button
+   Plain-CSS take on React Bits' SpecularButton (size lg, radius 4 to match the site, white tint 0.04,
+   text #f5f5f5, white line 1.2px, base #525252, idle 0.35, shine 10/34, glow 1,
+   follows the mouse within 250px). The JS that moves the shine is at the end of
+   hero-shimmer.js.
+   ============================================ */
+.btn-hero.btn-specular {
+  --mx: 20%; --my: 0%;           /* where the shine sits on the edge */
+  --shine: 0.35;                 /* 0.35 idle -> 1 when the cursor is close */
+  position: relative;
+  isolation: isolate;
+  padding: 17px 42px;
+  border: 0;
+  border-radius: 4px;            /* matches the other buttons on the site */
+  color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.10),    /* barely-there clean edge */
+              inset 0 1px 0 rgba(255, 255, 255, 0.10);       /* soft top bevel */
+  transition: transform 0.2s, background 0.3s;
+}
+/* the moving highlight on the border line */
+.btn-hero.btn-specular::before,
+.btn-hero.btn-specular::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.2px;
+  pointer-events: none;
+  background: radial-gradient(130px circle at var(--mx) var(--my),
+              rgba(255, 255, 255, calc(var(--shine) * 2.4)) 0,
+              rgba(255, 255, 255, calc(var(--shine) * 1.2)) 28px,
+              rgba(255, 255, 255, 0) 130px);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+/* soft glow: a blurred spot of light behind the shine (no ring, so no outline) */
+.btn-hero.btn-specular::after {
+  inset: -14px;
+  padding: 0;
+  border-radius: 24px;
+  -webkit-mask: none;
+  mask: none;
+  background: radial-gradient(70px circle at var(--mx) var(--my),
+              rgba(255, 255, 255, calc(var(--shine) * 0.55)) 0,
+              rgba(255, 255, 255, 0) 70px);
+  filter: blur(10px);
+  z-index: -1;
+}
+.btn-hero.btn-specular:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+.btn-hero.btn-specular:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   SCROLL STAR — as you scroll the hero, a star with a trail runs clockwise
+   around the button's border (StarBorder-style: white star, trail 0.3 of a lap,
+   1px line, glow 0.6). When it finishes the lap, the purple splash opens Work.
+   JS: end of hero-shimmer.js. Not used with reduced motion.
+   ============================================ */
+.btn-hero.btn-specular { --sp: 0; --a: 0deg; }          /* sp = scroll progress 0..1, a = star angle */
+.btn-hero.btn-specular::before { opacity: calc(1 - var(--sp) * 4); }   /* idle shine steps aside */
+.btn-hero.btn-specular::after  { opacity: calc(1 - var(--sp) * 4); }
+.btn-star {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;                                   /* thickness */
+  pointer-events: none;
+  opacity: calc(var(--sp) * 6);                   /* fades in as soon as you scroll */
+  background: conic-gradient(from calc(var(--a) - 108deg),
+              rgba(255, 255, 255, 0) 0deg,
+              rgba(255, 255, 255, 0.55) 90deg,
+              #ffffff 106deg,
+              rgba(255, 255, 255, 0) 108deg);   /* 108deg = trail length 0.3 */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+.btn-star::after {                                 /* glow 0.6 */
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: inherit;
+  filter: blur(7px);
+  opacity: 0.6;
+}
+/* "pressed" — when the lap finishes (or the button is clicked) the whole
+   border lights up and the button glows, like a real press */
+.btn-hero.btn-specular.is-pressed {
+  background: rgba(255, 255, 255, 0.14);
+  animation: btnPress 0.4s ease-out;
+  box-shadow: inset 0 0 0 1px #ffffff,
+              0 0 16px rgba(255, 255, 255, 0.5),
+              0 0 38px rgba(200, 185, 255, 0.4);
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+@keyframes btnPress {
+  0% { transform: scale(1); } 35% { transform: scale(0.96); } 100% { transform: scale(1); }
+}
+.btn-specular.is-pressed .btn-star {
+  opacity: 1;
+  background: #ffffff;                             /* full ring, not just the star */
+  transition: background 0.2s ease;
+}
+.btn-specular.is-pressed::before,
+.btn-specular.is-pressed::after { opacity: 0; }
+
+/* Page transition to Work: lets the browser animate between the two pages.
+   The circle reveal itself is defined in work.html (the page being revealed). */
+@view-transition { navigation: auto; }
