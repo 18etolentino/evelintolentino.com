@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listo — Evelin Tolentino</title>
+  <meta name="description" content="Listo helps undocumented families build an emergency plan, alert their people with one tap, and find trusted help near them." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <!-- Shared site styles (nav, footer, specs strip, prev/next) -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Listo-only styles. Every class here starts with "lx-" so no other page is affected. -->
+  <link rel="stylesheet" href="listo.css" />
+</head>
+<body class="lx-page">
+
+  <!-- NAV (same as every page) -->
+  <nav class="nav nav--dark" id="nav">
+    <a href="index.html" class="nav-monogram">ET</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="work.html" class="nav-link active">Work</a></li>
+      <li><a href="resume.html" class="nav-link">Resume</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="resume.html">Resume</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <header class="lx-hero">
+    <a href="work.html" class="lx-back">← Back to Work</a>
+
+    <div class="lx-hero__grid">
+      <div class="lx-hero__text">
+        <p class="lx-eyebrow">Listo · Ya estás listo · Civic tech · Passion project</p>
+        <h1 class="lx-hero__title">Clarity and confidence for families facing ICE.</h1>
+        <p class="lx-hero__sub">An emergency preparedness app that helps undocumented families plan for the worst and connect to resources they can trust.</p>
+
+        <div class="lx-meta">
+          <div><p class="lx-meta__k">Role</p><p>Researcher, Designer &amp; Developer · Solo</p></div>
+          <div><p class="lx-meta__k">Timeline</p><p>3 months · Continuing at Berkeley</p></div>
+          <div><p class="lx-meta__k">Tools</p><p>Figma, HTML/CSS/JS</p></div>
+        </div>
+
+        <div class="lx-hero__actions">
+          <a href="https://claude.ai/artifact/SNdpWhg9i7BqWoKC3VA8xQ" target="_blank" rel="noopener" class="lx-btn lx-btn--light">Try the prototype ↗</a>
+          <a href="#context" class="lx-btn lx-btn--ghost">Read the story ↓</a>
+        </div>
+      </div>
+
+      <div class="lx-hero__media">
+        <img class="lx-hero__phone" src="listo-img/listo_hero_phone.png" alt="Listo app on an iPhone">
+        <img class="lx-hero__sticker" src="listo-img/listo_fivestars.png" alt="" aria-hidden="true">
+      </div>
+    </div>
+
+    <blockquote class="lx-hero__quote">
+      “It exceeded my expectations. I want it to be real.”
+      <cite>Test participant, final prototype</cite>
+    </blockquote>
+
+    <div class="lx-hero__proof">
+      <div class="lx-proof">
+        <p class="lx-proof__num">14% <span>→</span> 86%</p>
+        <p class="lx-proof__label">preparedness score with Listo*</p>
+      </div>
+      <div class="lx-proof">
+        <p class="lx-proof__num">5.5<span>/7</span></p>
+        <p class="lx-proof__label">trust in Listo with real family information</p>
+      </div>
+      <div class="lx-proof">
+        <p class="lx-proof__num">5/6 <span class="lx-proof__unit">participants</span></p>
+        <p class="lx-proof__label">found free legal help, no guidance needed</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION TRACKER -->
+  <nav class="lx-index" id="lxIndex" aria-label="Case study sections">
+    <a href="#context" data-sec="context"><span>01</span>Context</a>
+    <a href="#problem" data-sec="problem"><span>02</span>Problem</a>
+    <a href="#process" data-sec="process"><span>03</span>Process</a>
+    <a href="#solution" data-sec="solution"><span>04</span>Solution</a>
+    <a href="#impact" data-sec="impact"><span>05</span>Impact</a>
+    <a href="#reflection" data-sec="reflection"><span>06</span>Reflection</a>
+  </nav>
+
+  <!-- ============================================
+       01 · CONTEXT
+       ============================================ -->
+  <section class="lx-section lx-section--dark" id="context">
+    <div class="lx-wrap">
+      <p class="lx-label">01 · Context</p>
+      <h2 class="lx-bigstat">14 million</h2>
+      <p class="lx-subtitle">undocumented immigrants in the U.S., many in mixed-status families, live with the daily threat of ICE detention, raids and family separation.</p>
+      <p class="lx-body">Masked agents are taking people off the street, racially profiling them by how they look and the language they speak. So families go silent, avoiding doctors, police and lawyers out of fear.</p>
+      <div class="lx-collage" aria-label="News coverage of ICE enforcement">
+        <img src="listo-img/listo_context_ice1.png" alt="">
+        <img src="listo-img/listo_context_ice2.png" alt="">
+        <img src="listo-img/listo_context_ice3.png" alt="">
+        <img src="listo-img/listo_context_ice5.png" alt="">
+        <img src="listo-img/listo_context_ice6.png" alt="">
+        <img src="listo-img/listo_context_ice7.png" alt="">
+        <img src="listo-img/listo_context_ice8.png" alt="">
+        <img src="listo-img/listo_context_ice9.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       02 · PROBLEM
+       ============================================ -->
+  <section class="lx-section" id="problem">
+    <div class="lx-wrap">
+      <p class="lx-label">02 · Problem</p>
+      <h2 class="lx-h2">People had no emergency plan in place in the event of an ICE encounter.</h2>
+      <p class="lx-subtitle">6 participants interviewed in Spanish</p>
+
+      <div class="lx-stats">
+        <div class="lx-stat">
+          <div class="lx-people" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="lx-stat__num">0 of 6</p>
+          <p class="lx-stat__label">had a written plan</p>
+        </div>
+        <div class="lx-stat">
+          <div class="lx-people" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="lx-stat__num">1 of 6</p>
+          <p class="lx-stat__label">had someone to pick up their kids</p>
+        </div>
+        <div class="lx-stat">
+          <div class="lx-people" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+          <p class="lx-stat__num">4 of 6</p>
+          <p class="lx-stat__label">were scammed by fake legal helpers, or knew someone who was</p>
+        </div>
+      </div>
+
+      <blockquote class="lx-quote">
+        <p>“I’m just hoping for the best, every day.”</p>
+        <cite>Interview participant</cite>
+      </blockquote>
+
+      <div class="lx-insight">
+        <p><strong>Information was hard to find. But the real barrier was trust.</strong></p>
+        <p>Families who’ve been scammed by fake legal helpers don’t trust new sources of help easily. And under chronic stress, an ICE encounter sends people into shock. Rights, phone numbers and who picks up the kids are hard to remember in the moment. <b>So the plan has to exist before the moment comes.</b></p>
+      </div>
+
+      <div class="lx-map">
+        <div class="lx-map__row"><span class="lx-map__p">No plan</span><span class="lx-map__arrow">→</span><span class="lx-map__s">Listo builds one with you</span></div>
+        <div class="lx-map__row"><span class="lx-map__p">Survival-mode stress</span><span class="lx-map__arrow">→</span><span class="lx-map__s">Less mental load at every step</span></div>
+        <div class="lx-map__row"><span class="lx-map__p">Panic in the moment</span><span class="lx-map__arrow">→</span><span class="lx-map__s">One tap</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       03 · PROCESS
+       ============================================ -->
+  <section class="lx-section lx-section--sand" id="process">
+    <div class="lx-wrap">
+      <p class="lx-label">03 · Process</p>
+      <h2 class="lx-h2">From a resource directory to a plan people own.</h2>
+      <div class="lx-phases" aria-hidden="true">
+        <span>Discover</span><span>The shift</span><span>Ideate</span><span>Refine</span>
+      </div>
+
+      <!-- 3a DISCOVER -->
+      <div class="lx-sub">
+        <p class="lx-sublabel">3a · Discover</p>
+        <h3 class="lx-h3">People weren’t looking for help, out of fear. And no one had a plan.</h3>
+        <p class="lx-subtitle">Lit review → 6 participants → early prototype</p>
+        <ol class="lx-steps">
+          <li><span class="lx-steps__n">01</span><strong>Lit review</strong><span>10 peer-reviewed sources on how survival-mode stress changes the way people take in information.</span></li>
+          <li><span class="lx-steps__n">02</span><strong>Mixed methods, n=6</strong><span>A survey, interviews and a walkthrough, all in Spanish.</span></li>
+          <li><span class="lx-steps__n">03</span><strong>Early prototype</strong><span>A resource hub built on Maslow’s hierarchy, emergency features and an AI assistant. Helpful, but still no plan.</span></li>
+        </ol>
+        <figure class="lx-art"><img src="listo-img/listo_early_prototype.png" alt="Early Listo prototype screens"><figcaption>Where it started: the early prototype</figcaption></figure>
+      </div>
+
+      <!-- 3b THE SHIFT -->
+      <div class="lx-sub">
+        <p class="lx-sublabel">3b · The shift</p>
+        <h3 class="lx-h3">One test, four gaps. They became the roadmap.</h3>
+        <p class="lx-subtitle">1 participant · preparedness 3 → 4 out of 7</p>
+        <div class="lx-gaps">
+          <div class="lx-gap"><p class="lx-gap__p">Activation friction</p><p class="lx-gap__arrow">↓</p><p class="lx-gap__s">One tap, no confirmation screen</p></div>
+          <div class="lx-gap"><p class="lx-gap__p">Plan felt like a template</p><p class="lx-gap__arrow">↓</p><p class="lx-gap__s">Guided, personal milestones</p></div>
+          <div class="lx-gap"><p class="lx-gap__p">No onboarding</p><p class="lx-gap__arrow">↓</p><p class="lx-gap__s">Meet Listo, a guide throughout</p></div>
+          <div class="lx-gap"><p class="lx-gap__p">Network felt intangible</p><p class="lx-gap__arrow">↓</p><p class="lx-gap__s">See what your contact receives</p></div>
+        </div>
+        <div class="lx-shifts">
+          <p><span>Generic</span> → <strong>Personal</strong></p>
+          <p><span>Static</span> → <strong>Guided</strong></p>
+          <p><span>Intangible</span> → <strong>Tangible</strong></p>
+        </div>
+      </div>
+
+      <!-- 3c IDEATE -->
+      <div class="lx-sub">
+        <p class="lx-sublabel">3c · Ideate</p>
+        <h3 class="lx-h3">An older sibling, not a lawyer or a chatbot.</h3>
+        <p class="lx-subtitle"><em>Listo</em> means “ready.” <em>Ya estás listo</em> means “now you’re ready.”</p>
+        <div class="lx-brand">
+          <div class="lx-brand__item"><p class="lx-brand__k">North star</p><p>Clarity, confidence and practical tools to advocate for themselves.</p></div>
+          <div class="lx-brand__item"><p class="lx-brand__k">Voice</p><p>A warm older sibling who always explains why.</p></div>
+          <div class="lx-brand__item"><p class="lx-brand__k">Character</p><p>Listo walks beside the user through every step.</p></div>
+          <div class="lx-brand__item"><p class="lx-brand__k">Color</p><p>Warm earth tones. Red only for emergencies.</p></div>
+        </div>
+        <div class="lx-palette" aria-label="Listo color palette">
+          <div style="--c:#C47457"><span>Terracotta</span></div>
+          <div style="--c:#A85C3E"><span>Terracotta dark</span></div>
+          <div style="--c:#B68036"><span>Copper</span></div>
+          <div style="--c:#9C9E80"><span>Sage</span></div>
+          <div style="--c:#3D3B2E"><span>Truffle</span></div>
+          <div style="--c:#C0392B"><span>Emergency only</span></div>
+        </div>
+        <div class="lx-ph-row">
+          <figure class="lx-art"><img src="listo-img/listo_moodboard.png" alt="Listo mood board"><figcaption>Mood board</figcaption></figure>
+          <figure class="lx-art lx-art--character"><img src="listo-img/listo_building.gif" alt="Listo, the guide character, at work"><figcaption>Listo, the character</figcaption></figure>
+        </div>
+      </div>
+
+      <!-- 3d REFINE -->
+      <div class="lx-sub">
+        <p class="lx-sublabel">3d · Refine</p>
+        <h3 class="lx-h3">Every feature had to be worth the risk.</h3>
+        <p class="lx-subtitle">Each decision mapped on impact vs. risk to the family</p>
+
+        <!-- ARTIFACT: stand-in 2x2, swap for your own -->
+        <div class="lx-matrix" role="img" aria-label="Impact versus risk matrix">
+          <span class="lx-matrix__y">Impact →</span>
+          <span class="lx-matrix__x">Risk to the family →</span>
+          <div class="lx-matrix__grid">
+            <div class="lx-q"><span class="lx-q__name">High impact · lower risk</span><span class="lx-chip">Sharing only the essentials</span></div>
+            <div class="lx-q"><span class="lx-q__name">High impact · higher risk</span><span class="lx-chip lx-chip--keep">Required account → design the risk down</span></div>
+            <div class="lx-q"><span class="lx-q__name">Lower impact · lower risk</span><span class="lx-chip">Legal info, not advice</span></div>
+            <div class="lx-q"><span class="lx-q__name">Lower impact · higher risk</span><span class="lx-chip lx-chip--cut">AI assistant → cut</span></div>
+          </div>
+        </div>
+
+        <ul class="lx-decisions">
+          <li><span class="lx-tag lx-tag--cut">Cut</span><div><strong>The AI assistant.</strong> I couldn’t guarantee it was secure.</div></li>
+          <li><span class="lx-tag">Kept</span><div><strong>A required account.</strong> Documents in one place and a trusted network have the highest impact. The risk is one I can design down.</div></li>
+          <li><span class="lx-tag">Kept</span><div><strong>Only the essentials shared.</strong> Contacts get a private link that expires, never your document photos.</div></li>
+          <li><span class="lx-tag">Kept</span><div><strong>Information, not advice.</strong> Rights in plain language, always pointing to a real lawyer.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       04 · SOLUTION
+       ============================================ -->
+  <section class="lx-section" id="solution">
+    <div class="lx-wrap">
+      <p class="lx-label">04 · Solution</p>
+      <h2 class="lx-h2">Prepare before. One tap during. Help always.</h2>
+
+      <!-- Timeline: as each feature scrolls into view, its node lights up and only its video plays -->
+      <div class="lx-tl" id="lxTimeline">
+        <div class="lx-tl__rail" aria-hidden="true"><span class="lx-tl__fill" id="lxTlFill"></span></div>
+
+        <div class="lx-step" data-step="1">
+          <span class="lx-node" aria-hidden="true">1</span>
+          <div class="lx-feature">
+            <div class="lx-feature__text">
+              <p class="lx-feature__k">Before</p>
+              <h3 class="lx-h3">A plan that builds itself, one small step at a time.</h3>
+              <p class="lx-body">Guided milestones based on United We Dream’s recommendations. Anything missing goes on a to-do list with free help.</p>
+            </div>
+            <video class="lx-video" src="listo-img/listo_solution_plan_roadmap.mov" muted loop playsinline preload="metadata"></video>
+          </div>
+        </div>
+
+        <div class="lx-step lx-step--red" data-step="2">
+          <span class="lx-node" aria-hidden="true">2</span>
+          <div class="lx-feature lx-feature--flip">
+            <div class="lx-feature__text">
+              <p class="lx-feature__k lx-feature__k--red">During</p>
+              <h3 class="lx-h3">One red button, right on your home screen.</h3>
+              <p class="lx-body">One tap alerts your people with your location and plan, and opens your rights. No searching in a moment of panic.</p>
+              <ol class="lx-flow">
+                <li><span>1</span>Plan done</li>
+                <li><span>2</span>Create shortcut</li>
+                <li><span>3</span>On home screen</li>
+                <li><span>4</span>Plan activated</li>
+              </ol>
+            </div>
+            <video class="lx-video" src="listo-img/listo_emergency_full_flow.mp4" muted loop playsinline preload="metadata"></video>
+          </div>
+        </div>
+
+        <div class="lx-step" data-step="3">
+          <span class="lx-node" aria-hidden="true">3</span>
+          <div class="lx-feature">
+            <div class="lx-feature__text">
+              <p class="lx-feature__k">Always</p>
+              <h3 class="lx-h3">Trusted help near you, organized by need.</h3>
+              <p class="lx-body">Resources follow Maslow’s hierarchy, from food and shelter to legal help, education and growth.</p>
+            </div>
+            <video class="lx-video" src="listo-img/listo_solution_resource.mov" muted loop playsinline preload="metadata"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       05 · IMPACT
+       ============================================ -->
+  <section class="lx-section lx-section--terra" id="impact">
+    <div class="lx-wrap">
+      <p class="lx-label lx-label--light">05 · Impact</p>
+      <h2 class="lx-h2">From 1 to 6: one session made a family’s plan real.</h2>
+      <p class="lx-subtitle">1 participant · final prototype</p>
+
+      <div class="lx-compare">
+        <div class="lx-compare__col">
+          <p class="lx-compare__k">Early prototype</p>
+          <p class="lx-compare__num">3 → 4</p>
+          <p class="lx-compare__label">preparedness, out of 7</p>
+        </div>
+        <div class="lx-compare__col lx-compare__col--now">
+          <p class="lx-compare__k">Final prototype</p>
+          <p class="lx-compare__num">1 → 6</p>
+          <p class="lx-compare__label">preparedness, out of 7</p>
+        </div>
+      </div>
+      <div class="lx-mini">
+        <p><strong>6 / 7</strong> ease of building the plan</p>
+        <p><strong>5–6 / 7</strong> trust with real information</p>
+        <p><strong>Yes</strong> understood the app at first glance</p>
+      </div>
+
+      <blockquote class="lx-quote lx-quote--big">
+        <p>“If this was real I would be so much more relieved, just having the certainty of knowing where my loved one is if I’m stopped.”</p>
+      </blockquote>
+
+      <div class="lx-wins">
+        <div><strong>It found her blind spots.</strong> She learned about the 2-year proof of presence for the first time.</div>
+        <div><strong>Practice made rights usable.</strong> “Actually getting to practice them was new.”</div>
+        <div><strong>One tap felt fast.</strong> “I love the button and how fast it executed the plan.”</div>
+      </div>
+      <p class="lx-foot">*Self-rated preparedness, 1/7 → 6/7. One participant, final prototype. Quotes translated and lightly edited.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       06 · REFLECTION
+       ============================================ -->
+  <section class="lx-section" id="reflection">
+    <div class="lx-wrap">
+      <p class="lx-label">06 · Reflection</p>
+      <h2 class="lx-h2">Protesting through design.</h2>
+      <p class="lx-subtitle">This problem is close to home.</p>
+      <p class="lx-body">Every conversation with participants had to be earned, and that trust mattered more to me than any finding.</p>
+
+      <div class="lx-assume">
+        <p class="lx-assume__k">My community is not often designed for.</p>
+        <p>Legal tech assumes literacy.</p>
+        <p>Civic tech assumes institutional trust.</p>
+        <p>Government tools assume you are not afraid of the government.</p>
+        <p class="lx-assume__end">Listo assumes none of those things.</p>
+      </div>
+
+      <p class="lx-body"><strong>What’s next:</strong> Listo moves to the second stage of Berkeley’s Big Ideas competition, with data security front and center.</p>
+
+      <p class="lx-closing">If this helps one person understand their rights, find a credible lawyer, or know their family is safe, that is enough.</p>
+      <p class="lx-sign">Ya estás listo.</p>
+    </div>
+  </section>
+
+  <!-- PREV / NEXT (shared site component) -->
+  <div class="case-nav">
+    <div class="case-nav__item" style="visibility: hidden;">
+      <!-- No previous project -->
+    </div>
+    <a href="shein.html" class="case-nav__item next">
+      <span class="case-nav__dir">Next Project →</span>
+      <span class="case-nav__name">SHEIN Circular Ecosystem</span>
+    </a>
+  </div>
+
+  <!-- FOOTER (same as every page) -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-tagline">Thanks for stopping by, let's chat. 👋</p>
+      </div>
+      <div>
+        <p class="footer-col-label">Contact</p>
+        <a href="mailto:etolentino@berkeley.edu" class="footer-link">etolentino@berkeley.edu</a>
+      </div>
+      <div>
+        <p class="footer-col-label">Let's Connect</p>
+        <a href="https://linkedin.com/in/evelin-tolentino-3aa1a51a6" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        <a href="resume.html" class="footer-link">Resume</a>
+        <a href="work.html" class="footer-link">Work</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Evelin Tolentino</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu (same as every page)
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Give the nav a solid background once you scroll past the top of the hero
+    const nav = document.getElementById('nav');
+    const setNav = () => nav.classList.toggle('lx-nav-solid', window.scrollY > 80);
+    window.addEventListener('scroll', setNav, { passive: true });
+    setNav();
+
+    // Section tracker: show it after the hero, highlight the section you're reading
+    const index = document.getElementById('lxIndex');
+    const hero = document.querySelector('.lx-hero');
+    const sections = [...document.querySelectorAll('.lx-section')];
+    const links = [...index.querySelectorAll('a')];
+    const track = () => {
+      index.classList.toggle('is-on', window.scrollY > hero.offsetHeight - 200);
+      let current = sections[0].id;
+      sections.forEach(s => { if (s.getBoundingClientRect().top < window.innerHeight * 0.4) current = s.id; });
+      links.forEach(a => a.classList.toggle('is-active', a.dataset.sec === current));
+      index.dataset.current = current;
+    };
+    window.addEventListener('scroll', track, { passive: true });
+    track();
+
+    // Solution timeline: light up the step you're reading, play only its video
+    const steps = [...document.querySelectorAll('.lx-step')];
+    const tlFill = document.getElementById('lxTlFill');
+    const tl = document.getElementById('lxTimeline');
+    const updateSteps = () => {
+      const mid = window.innerHeight * 0.5;
+      let active = -1;
+      steps.forEach((s, i) => { if (s.getBoundingClientRect().top < mid) active = i; });
+      steps.forEach((s, i) => {
+        s.classList.toggle('is-active', i === active);
+        s.classList.toggle('is-done', i < active);
+        const v = s.querySelector('video');
+        if (!v) return;
+        if (i === active) { const p = v.play(); if (p) p.catch(() => {}); } else { v.pause(); }
+      });
+      // grow the rail down to the active node
+      const r = tl.getBoundingClientRect();
+      const node = active >= 0 ? steps[active].querySelector('.lx-node').getBoundingClientRect() : null;
+      tlFill.style.height = node ? Math.max(0, node.top + node.height / 2 - r.top) + 'px' : '0px';
+    };
+    window.addEventListener('scroll', updateSteps, { passive: true });
+    window.addEventListener('resize', updateSteps);
+    updateSteps();
+
+    // Gentle fade-in as each block scrolls into view (skipped if the visitor prefers less motion)
+    const revealItems = document.querySelectorAll('.lx-h2, .lx-lead, .lx-stats, .lx-quote, .lx-insight, .lx-map, .lx-steps, .lx-gaps, .lx-shifts, .lx-brand, .lx-palette, .lx-matrix, .lx-decisions, .lx-flow, .lx-compare, .lx-mini, .lx-wins, .lx-assume, .lx-closing');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      revealItems.forEach(el => el.classList.add('lx-reveal'));
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      revealItems.forEach(el => io.observe(el));
+    }
+  </script>
+
+</body>
+</html>
