@@ -11,6 +11,7 @@
   <!-- Shared site styles (nav, footer, specs strip, prev/next) -->
   <link rel="stylesheet" href="style.css" />
   <!-- Listo-only styles. Every class here starts with "lx-" so no other page is affected. -->
+  <link rel="preload" href="listo-img/listo_hero_phones_mask.png" as="image" />
   <link rel="stylesheet" href="listo.css" />
 </head>
 <body class="lx-page">
@@ -45,7 +46,7 @@
     <div class="lx-hero__grid">
       <div class="lx-hero__text">
         <p class="lx-eyebrow">Listo · Ya estás listo · Civic tech · Passion project</p>
-        <h1 class="lx-hero__title">Clarity and confidence for families facing ICE.</h1>
+        <h1 class="lx-hero__title">Giving Clarity and<br class="lx-br-wide"> <span class="lx-scribble lx-scribble--hero">Confidence<svg viewBox="0 0 338 17" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 2C221.239 4.912 342.427 7.21333 335 6L37.0916 10.32L165.761 15H300"/></svg></span> to families facing ICE.</h1>
         <p class="lx-hero__sub">An emergency preparedness app that helps undocumented families plan for the worst and connect to resources they can trust.</p>
 
         <div class="lx-meta">
@@ -61,15 +62,24 @@
       </div>
 
       <div class="lx-hero__media">
-        <img class="lx-hero__phone" src="listo-img/listo_hero_phone.png" alt="Listo app on an iPhone">
-        <img class="lx-hero__sticker" src="listo-img/listo_fivestars.png" alt="" aria-hidden="true">
+        <div class="lx-hero__panel" data-phone-mock="listo-img/listo_hero_phones_mask.png">
+          <!-- shadows: phones on white, multiplied into the page (white disappears) -->
+          <img class="lx-hero__shadow" src="listo-img/listo_hero_phones_poster.jpg" alt="" aria-hidden="true">
+          <!-- source video (hidden) is drawn onto the canvas, cut to the phone shapes -->
+          <video class="phone-mock__src" src="listo-img/listo_hero_phones.mp4" poster="listo-img/listo_hero_phones_poster.jpg"
+                 autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+          <canvas class="phone-mock__canvas" role="img" aria-label="Listo on two iPhones: the welcome screen and Listo's introduction"></canvas>
+        </div>
       </div>
     </div>
 
-    <blockquote class="lx-hero__quote">
-      “It exceeded my expectations. I want it to be real.”
-      <cite>Test participant, final prototype</cite>
-    </blockquote>
+    <div class="lx-hero__quoterow">
+      <blockquote class="lx-hero__quote">
+        “It exceeded my expectations. I want it to be real.”
+        <cite>Test participant, final prototype</cite>
+      </blockquote>
+      <img class="lx-hero__sticker" src="listo-img/listo_fivestars.png" alt="" aria-hidden="true">
+    </div>
 
     <div class="lx-hero__proof">
       <div class="lx-proof">
@@ -485,5 +495,6 @@
     }
   </script>
 
+  <script src="phone-mock.js"></script>
 </body>
 </html>

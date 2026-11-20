@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="hero-shimmer.css" />
+  <!-- fetch the Work page HTML ahead of time (cheap) so "See My Work" opens fast -->
+  <link rel="prefetch" href="work.html" />
 </head>
 <body>
 
@@ -37,11 +39,11 @@
     <canvas class="hero-shimmer" id="heroShimmer" aria-hidden="true"></canvas>
     <p class="hero-eyebrow">UX Researcher &amp; Product Designer</p>
     <h1 class="hero-title">Hi, I'm Evelin.</h1>
-    <p class="hero-sub">UC Berkeley MIMS Fellow · First-Gen · Bilingual Researcher</p>
+    <p class="hero-sub">UC Berkeley MIMS 28' · I-School Fellow · Bilingual Researcher</p>
     <a href="work.html" class="btn-hero btn-specular"><span class="btn-star" aria-hidden="true"></span>See My Work ↓</a>
   </section>
 
-  <script>
+  <script
     // Nav dark/light on scroll
     const nav = document.getElementById('nav');
     const hero = document.querySelector('.hero');

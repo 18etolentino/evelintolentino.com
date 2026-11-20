@@ -8,47 +8,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <!-- Arriving from the home page "See My Work" button: this page is revealed as a
-       circle growing out of the button (browser view transition; Chrome, Edge, Safari 18+).
-       Other visits get the normal page load. -->
+  <link rel="preload" href="listo-img/listo_hero_phones_mask.png" as="image" />
+  <!-- Arriving from the home page "See My Work" button: a light cross-fade where
+       Work rises gently into place (browser view transition; Chrome, Edge, Safari 18+).
+       Only opacity/transform are animated, so it stays smooth and cheap. -->
   <script>
-    try {
-      const v = JSON.parse(sessionStorage.getItem('etReveal') || 'null');
-      if (v) {
-        sessionStorage.removeItem('etReveal');
-        const h = document.documentElement;
-        h.classList.add('from-button');
-        h.style.setProperty('--vx', (v.x * 100) + 'vw');
-        h.style.setProperty('--vy', (v.y * 100) + 'vh');
+    (function () {
+      function apply() {
+        try {
+          if (!sessionStorage.getItem('etReveal')) return;
+          sessionStorage.removeItem('etReveal');
+          document.documentElement.classList.add('from-button');
+        } catch (e) {}
       }
-    } catch (e) {}
+      apply();
+      window.addEventListener('pagereveal', apply);
+    })();
   </script>
   <style>
     @view-transition { navigation: auto; }
-    /* soft ripple reveal: the Work page fades in through a feathered circle that
-       spreads from the button, while the home page gently dissolves behind it */
-    @property --vr { syntax: "<length>"; inherits: true; initial-value: 0px; }
-    html.from-button::view-transition-group(root) { animation-duration: 1s; }
-    html.from-button::view-transition-old(root) {
-      animation: homeDissolve 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-    }
-    html.from-button::view-transition-new(root) {
-      --feather: 28vmax;
-      -webkit-mask-image: radial-gradient(circle at var(--vx, 50vw) var(--vy, 60vh), #000 calc(var(--vr) - var(--feather)), transparent var(--vr));
-              mask-image: radial-gradient(circle at var(--vx, 50vw) var(--vy, 60vh), #000 calc(var(--vr) - var(--feather)), transparent var(--vr));
-      animation: rippleIn 1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-    }
-    @keyframes rippleIn {
-      from { --vr: 0px; opacity: 0.6; }
-      to   { --vr: 190vmax; opacity: 1; }
-    }
-    @keyframes homeDissolve {
-      from { opacity: 1; transform: scale(1);    filter: blur(0); }
-      to   { opacity: 0; transform: scale(1.04); filter: blur(6px); }
-    }
+    html.from-button::view-transition-old(root) { animation: wkOut 0.28s ease-in both; }
+    html.from-button::view-transition-new(root) { animation: wkIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.08s both; }
+    @keyframes wkOut { to { opacity: 0; } }
+    @keyframes wkIn  { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
     @media (prefers-reduced-motion: reduce) {
       html.from-button::view-transition-old(root),
-      html.from-button::view-transition-new(root) { animation: none; -webkit-mask-image: none; mask-image: none; }
+      html.from-button::view-transition-new(root) { animation: none; }
     }
   </style>
   <style>
@@ -90,7 +75,29 @@
       background: #1a1a1a;
     }
 
+    /* Listo phone mockup */
+    .work-mock {
+      position: relative;
+      justify-self: center;
+      height: min(72vh, 640px);
+      aspect-ratio: 1000 / 1236;
+    }
+    .work-mock__shadow,
+    .work-mock .phone-mock__src,
+    .work-mock .phone-mock__canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: contain; display: block;
+    }
+    .work-mock__shadow { mix-blend-mode: multiply; }
+    .work-mock .phone-mock__src { opacity: 0; pointer-events: none; }
+    /* hidden until phone-mock.js has drawn the phones, then fades in as one piece */
+    .work-mock .work-mock__shadow,
+    .work-mock .phone-mock__canvas { opacity: 0; transition: opacity 0.5s ease; }
+    .work-mock.is-ready .work-mock__shadow,
+    .work-mock.is-ready .phone-mock__canvas { opacity: 1; }
+
     @media (max-width: 900px) {
+      .work-mock { height: auto; width: min(80vw, 380px); }
       html, body { height: auto; overflow: auto; }
       .work-page-wrap { height: auto; overflow: visible; }
       .work-gallery { overflow: visible; scroll-snap-type: none; }
@@ -135,26 +142,30 @@
       <section class="work-section listo-section" id="listo">
         <div class="work-section__inner">
           <div class="work-meta">
-            <p class="work-meta__label">01 — UX Research · Civic Tech · AI</p>
+            <p class="work-meta__label">01 — Passion Project · Civic Tech</p>
             <h2 class="work-meta__title">Listo — Ya Estás Listo</h2>
             <div class="work-meta__row">
               <span class="work-meta__key">Role</span>
-              <span class="work-meta__val">Lead UX Researcher &amp; Designer, Solo</span>
+              <span class="work-meta__val">Researcher, Designer &amp; Developer · Solo</span>
             </div>
             <div class="work-meta__row">
               <span class="work-meta__key">Duration</span>
-              <span class="work-meta__val">Spring 2026 — Ongoing</span>
+              <span class="work-meta__val">3 months · Ongoing</span>
             </div>
             <div class="work-meta__row">
               <span class="work-meta__key">Tools</span>
-              <span class="work-meta__val">Figma, Qualtrics, Mixed-Methods Research</span>
+              <span class="work-meta__val">Figma, HTML/CSS/JS</span>
             </div>
-            <p class="work-meta__overview">AI-assisted legal readiness for undocumented immigrants. The barrier isn't a lack of information — it's survival-mode cognition. Every feature was designed to reduce cognitive demand, not add to it.</p>
+            <p class="work-meta__overview">An emergency preparedness app that helps undocumented families plan for the worst and connect to resources they can trust.</p>
             <a href="listo.html" class="btn-view">View Project ➞</a>
           </div>
-          <div class="work-images">
-            <div class="work-img-placeholder"><span>Screenshot</span></div>
-            <div class="work-img-placeholder tall"><span>Mobile</span></div>
+          <!-- Same phone mockup as the Listo hero: shadow layer multiplied into the
+               terracotta + the video masked to the phone shapes (no box behind it) -->
+          <div class="work-mock" data-phone-mock="listo-img/listo_hero_phones_mask.png">
+            <img class="work-mock__shadow" src="listo-img/listo_hero_phones_poster.jpg" alt="" aria-hidden="true">
+            <video class="phone-mock__src" src="listo-img/listo_hero_phones.mp4" poster="listo-img/listo_hero_phones_poster.jpg"
+                   autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+            <canvas class="phone-mock__canvas" role="img" aria-label="Listo on two iPhones: the welcome screen and Listo's introduction"></canvas>
           </div>
         </div>
       </section>
@@ -363,5 +374,6 @@
     });
   </script>
 
+  <script src="phone-mock.js"></script>
 </body>
 </html>

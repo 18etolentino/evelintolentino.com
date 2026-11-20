@@ -570,8 +570,8 @@ void main() {
     if (p >= 0.98 && !done) go();
   }
   // lap finished or button clicked: the button lights up, a light ripple runs through
-  // the silk from the button, then the real Work page opens as a circle growing out of
-  // the button (CSS view transition, see work.html). Browsers without it just open Work.
+  // the silk from the button, then Work cross-fades in (CSS view transition, see
+  // work.html). Browsers without it just open Work.
   function go(){
     if (done) return;
     done = true;
@@ -579,8 +579,8 @@ void main() {
     const x = r.left + r.width / 2, y = r.top + r.height / 2;
     btn.classList.add('is-pressed');
     if (window.heroRipple) window.heroRipple(x, y);
-    try { sessionStorage.setItem('etReveal', JSON.stringify({ x: x / innerWidth, y: y / innerHeight })); } catch (e) {}
-    setTimeout(() => { window.location.href = TARGET; }, 480);   // ripple starts, then the page ripples in
+    try { sessionStorage.setItem('etReveal', '1'); } catch (e) {}
+    setTimeout(() => { window.location.href = TARGET; }, 260);   // a beat to see the press + ripple, then a light cross-fade
   }
   btn.addEventListener('click', e => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;   // let "open in new tab" work normally
